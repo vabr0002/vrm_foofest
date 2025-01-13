@@ -15,19 +15,19 @@ const Info = ({ onNext, setCurrentView }) => {
 
   const { control, register, handleSubmit, setValue } = useForm({
     defaultValues: {
-      forms: [],
-    },
+      forms: []
+    }
   });
 
   const { fields } = useFieldArray({
     control,
-    name: "forms",
+    name: "forms"
   });
 
   useEffect(() => {
     const newForms = Array.from({ length: totalTickets }, () => ({
       name: "",
-      email: "",
+      email: ""
     }));
     setValue("forms", newForms);
   }, [totalTickets, setValue]);
@@ -53,7 +53,7 @@ const Info = ({ onNext, setCurrentView }) => {
     reservationId,
     createReservation,
     setReservationId,
-    campingSelection.area,
+    campingSelection.area
   ]);
 
   const onSubmit = (data) => {
@@ -76,29 +76,29 @@ const Info = ({ onNext, setCurrentView }) => {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {fields.map((item, index) => (
           <div key={item.id} className="mb-4 rounded-md">
-            <h3 className="text-lg font-semibold text-white mb-2">
+            <h3 className="text-lg font-semibold text-inverted mb-2">
               Person {index + 1}
             </h3>
             <div className="mb-4">
               <label
-                className="block text-sm font-bold mb-1"
+                className="block text-sm font-bold mb-1 text-inverted"
                 htmlFor={`forms.${index}.name`}
               >
                 Name
               </label>
               <input
                 {...register(`forms.${index}.name`, {
-                  required: "Name is required.",
+                  required: "Name is required."
                 })}
                 type="text"
-                className="w-full text-white border border-gray-400 rounded-md p-3 bg-black focus:border-primary focus:outline-none"
+                className="w-full text-invert border border-gray-400 rounded-md p-3 bg-transparent focus:border-primary focus:outline-none"
                 placeholder="Enter name"
               />
             </div>
 
             <div className="mb-4">
               <label
-                className="block text-sm font-bold mb-1"
+                className="block text-sm font-bold mb-1 text-inverted"
                 htmlFor={`forms.${index}.email`}
               >
                 Email
@@ -108,11 +108,11 @@ const Info = ({ onNext, setCurrentView }) => {
                   required: "Email is required.",
                   pattern: {
                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Invalid email address.",
-                  },
+                    message: "Invalid email address."
+                  }
                 })}
                 type="email"
-                className="w-full text-white border border-gray-400 rounded-md p-3 bg-black focus:border-primary focus:outline-none"
+                className="w-full text-inverted border border-gray-400 rounded-md p-3 bg-transparent focus:border-primary focus:outline-none"
                 placeholder="Enter email"
               />
             </div>
@@ -124,13 +124,13 @@ const Info = ({ onNext, setCurrentView }) => {
           <button
             onClick={onBackHandler}
             type="button"
-            className="px-10 py-2 border border-primary text-white rounded-full"
+            className="px-10 py-2 border text-black border-primary hover:text-primary rounded-full"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-10 py-2 bg-primary border border-primary text-white rounded-full"
+            className="px-10 py-2 border bg-primary text-black border-primary hover:bg-transparent hover:text-primary rounded-full"
           >
             Next
           </button>

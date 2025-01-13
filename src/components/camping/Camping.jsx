@@ -35,7 +35,7 @@ const Camping = ({ onNext, onBack }) => {
     totalTents,
     campingSelection.area,
     campingSelection.areas,
-    updateCampingSelection,
+    updateCampingSelection
   ]);
 
   const handleTentChange = (type, value) => {
@@ -126,7 +126,7 @@ const Camping = ({ onNext, onBack }) => {
                 campingSelection.tents.twoPerson - 1
               )
             }
-            className="flex items-center justify-center border border-primary text-white rounded-full bg-black hover:bg-primary text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
+            className="flex items-center justify-center bg-primary border border-primary text-white rounded-full hover:bg-transparent hover:text-primary text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
             disabled={campingSelection.tents.twoPerson <= 0}
           >
             -
@@ -137,7 +137,7 @@ const Camping = ({ onNext, onBack }) => {
             onChange={(e) =>
               handleTentChange("twoPerson", parseInt(e.target.value, 10) || 0)
             }
-            className="w-16 text-center border border-primary text-white bg-black text-lg focus:outline-none focus:ring-0"
+            className="w-16 text-center border border-primary text-invert bg-inherit text-lg focus:outline-none focus:ring-0"
             min="0"
           />
           <button
@@ -147,7 +147,7 @@ const Camping = ({ onNext, onBack }) => {
                 campingSelection.tents.twoPerson + 1
               )
             }
-            className="flex items-center justify-center bg-primary border border-primary text-white rounded-full hover:bg-black text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
+            className="flex items-center justify-center bg-primary border border-primary text-white rounded-full hover:bg-transparent hover:text-primary text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
           >
             +
           </button>
@@ -164,7 +164,7 @@ const Camping = ({ onNext, onBack }) => {
                 campingSelection.tents.threePerson - 1
               )
             }
-            className="flex items-center justify-center border border-primary text-white rounded-full bg-black hover:bg-primary text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
+            className="flex items-center justify-center bg-primary border border-primary text-white rounded-full hover:bg-transparent hover:text-primary text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
             disabled={campingSelection.tents.threePerson <= 0}
           >
             -
@@ -175,7 +175,7 @@ const Camping = ({ onNext, onBack }) => {
             onChange={(e) =>
               handleTentChange("threePerson", parseInt(e.target.value, 10) || 0)
             }
-            className="w-16 text-center border border-primary text-white bg-black text-lg focus:outline-none focus:ring-0"
+            className="w-16 text-center border border-primary text-invert bg-inherit text-lg focus:outline-none focus:ring-0"
             min="0"
           />
           <button
@@ -185,7 +185,7 @@ const Camping = ({ onNext, onBack }) => {
                 campingSelection.tents.threePerson + 1
               )
             }
-            className="flex items-center justify-center bg-primary border border-primary text-white rounded-full hover:bg-black text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
+            className="flex items-center justify-center bg-primary border border-primary text-white rounded-full hover:bg-transparent hover:text-primary text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
           >
             +
           </button>
@@ -197,29 +197,35 @@ const Camping = ({ onNext, onBack }) => {
         <div className="flex items-center space-x-2">
           <button
             onClick={() =>
-              handleTentChange("ownTent", campingSelection.tents.ownTent - 1)
+              handleTentChange(
+                "twoPerson",
+                campingSelection.tents.twoPerson - 1
+              )
             }
-            className="flex items-center justify-center border border-primary text-white rounded-full bg-black hover:bg-primary text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
-            disabled={campingSelection.tents.ownTent <= 0}
+            className="flex items-center justify-center border border-primary text-white rounded-full bg-primary hover:bg-transparent hover:text-primary text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
+            disabled={campingSelection.tents.twoPerson <= 0}
           >
             -
           </button>
+
           <input
             type="number"
-            value={campingSelection.tents.ownTent || 0}
-            onChange={(e) => {
-              const inputValue =
-                e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-              handleTentChange("ownTent", inputValue);
-            }}
-            className="w-16 text-center border border-primary text-white bg-black text-lg focus:outline-none focus:ring-0"
+            value={campingSelection.tents.twoPerson}
+            onChange={(e) =>
+              handleTentChange("twoPerson", parseInt(e.target.value, 10) || 0)
+            }
+            className="w-16 text-center border border-primary text-invert bg-inherit text-lg focus:outline-none focus:ring-0"
             min="0"
           />
+
           <button
             onClick={() =>
-              handleTentChange("ownTent", campingSelection.tents.ownTent + 1)
+              handleTentChange(
+                "twoPerson",
+                campingSelection.tents.twoPerson + 1
+              )
             }
-            className="flex items-center justify-center bg-primary border border-primary text-white rounded-full hover:bg-black text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
+            className="flex items-center justify-center bg-primary border border-primary text-white rounded-full hover:bg-transparent hover:text-primary text-lg transition focus:outline-none h-[32px] w-[32px] cursor-pointer"
           >
             +
           </button>
@@ -234,7 +240,7 @@ const Camping = ({ onNext, onBack }) => {
           onChange={toggleGreenCamping}
           className="border border-primary text-primary w-5 h-5 rounded-md bg-black focus:outline-none focus:ring-2 focus:ring-primary"
         />
-        <label htmlFor="greenCamping" className="text-lg text-white ml-2">
+        <label htmlFor="greenCamping" className="text-lg text-inverted ml-2">
           Green Camping
         </label>
       </div>
@@ -244,13 +250,13 @@ const Camping = ({ onNext, onBack }) => {
       <div className="flex justify-between mt-4">
         <button
           onClick={onBack}
-          className="px-10 py-2 border border-primary text-white rounded-full"
+          className="px-10 py-2 border border-primary text-inherti hover:text-primary rounded-full"
         >
           Back
         </button>
         <button
           onClick={onNextHandler}
-          className={`px-10 py-2 bg-primary border border-primary text-white rounded-full ${
+          className={`px-10 py-2 bg-primary border border-primary text-white rounded-full hover:bg-transparent hover:text-primary ${
             !canProceedToPayment ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={!canProceedToPayment}

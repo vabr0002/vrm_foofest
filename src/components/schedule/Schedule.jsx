@@ -61,7 +61,7 @@ const Schedule = ({ stages }) => {
               className={`px-6 py-2 rounded-full border ${
                 selectedStage === name
                   ? "bg-primary text-white border-primary"
-                  : "bg-black text-white border-primary hover:bg-primary transition ease-out duration-200"
+                  : "bg-inherit text-inherit border-primary hover:bg-primary transition ease-out duration-200 hover:text-black"
               }`}
             >
               {name}
@@ -74,7 +74,7 @@ const Schedule = ({ stages }) => {
             <button
               key={day}
               onClick={() => scrollToDay(day)}
-              className="px-6 py-2 bg-primary text-white rounded-full hover:bg-black border border-primary transition ease-out duration-200"
+              className="px-6 py-2 bg-primary text-inherit rounded-full  border hover:bg-transparent border-primary hover:text-inverted transition ease-out duration-200"
             >
               {day.charAt(0).toUpperCase() + day.slice(1)}
             </button>
@@ -89,7 +89,7 @@ const Schedule = ({ stages }) => {
               className={`px-6 py-2 rounded-full border ${
                 selectedGenre === genre
                   ? "bg-primary text-white border-primary"
-                  : "bg-black text-white border-primary hover:bg-primary transition ease-out duration-200"
+                  : "bg-inherit text-inherit border-primary hover:bg-primary transition ease-out duration-200 hover:text-black"
               }`}
             >
               {genre}
@@ -110,11 +110,11 @@ const Schedule = ({ stages }) => {
           .map(({ name, stageSchedule }) => (
             <div
               key={name}
-              className={`rounded-xl shadow bg-black border-darkorange border-2 text-center p-8 mb-8 ${
+              className={`rounded-xl shadow bg-inherit border-darkorange border-2 text-center p-8 mb-8 ${
                 selectedStage ? "w-full max-w-7xl" : ""
               }`}
             >
-              <h2 className="text-md text-3xl font-bold mb-8 text-white font-oswald">
+              <h2 className="text-md text-3xl font-bold mb-8 text-inherit font-oswald">
                 {name}
               </h2>
               {Object.keys(stageSchedule).map((day) => {
@@ -130,7 +130,7 @@ const Schedule = ({ stages }) => {
 
                 return (
                   <div key={day} id={day} className="mb-2">
-                    <h3 className="text-lg font-semibold mb-1 capitalize text-primary">
+                    <h3 className="text-lg font-semibold mb-1 capitalize text-inherit">
                       {day}
                     </h3>
                     <div className="grid gap-1">
@@ -165,14 +165,14 @@ const Schedule = ({ stages }) => {
                                     cancelled
                                   })
                                 }
-                                className={`hover:scale-[1.03] transition ease-in-out duration-300 border rounded-[10px] cursor-pointer ${
+                                className={`hover:scale-[1.03] transition ease-in-out duration-300 border rounded-xl bg-inherit cursor-pointer ${
                                   cancelled
                                     ? "bg-red-900 border-red-500 text-white" // Hvis aflyst: rød baggrund og border
-                                    : "border-darkorange hover:border-primary hover:text-primary"
+                                    : "border-darkorange hover:border-primary hover:text-primary hover:bg-primary/40"
                                 }`}
                               >
-                                <CardHeader className="p-2">
-                                  <CardTitle className="text-xs font-bold flex justify-between items-center">
+                                <CardHeader className="p-2 ">
+                                  <CardTitle className="text-xs font-bold flex justify-between items-center text-inherit">
                                     <span>{act}</span>
                                     {cancelled && (
                                       <span className="text-red-500 font-semibold">

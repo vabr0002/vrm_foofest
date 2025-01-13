@@ -12,9 +12,9 @@ export default function Payment({ onBack, setCurrentView }) {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid }
   } = useForm({
-    mode: "onChange",
+    mode: "onChange"
   });
 
   const handlePayment = async () => {
@@ -45,8 +45,8 @@ export default function Payment({ onBack, setCurrentView }) {
               required: "Card number is required.",
               pattern: {
                 value: /^[0-9]{13,19}$/,
-                message: "Card number must be between 13 and 19 digits.",
-              },
+                message: "Card number must be between 13 and 19 digits."
+              }
             })}
             type="text"
             className="w-full text-white border border-gray-400 rounded-md p-3 bg-black focus:border-primary focus:outline-none"
@@ -63,7 +63,7 @@ export default function Payment({ onBack, setCurrentView }) {
           </label>
           <input
             {...register("cardHolder", {
-              required: "Cardholder name is required.",
+              required: "Cardholder name is required."
             })}
             type="text"
             className="w-full text-white border border-gray-400 rounded-md p-3 bg-black focus:border-primary focus:outline-none"
@@ -87,8 +87,8 @@ export default function Payment({ onBack, setCurrentView }) {
                 required: "Expiry date is required.",
                 pattern: {
                   value: /^(0[1-9]|1[0-2])\/\d{2}$/,
-                  message: "Ugyldig udløbsdato (MM/ÅÅ).",
-                },
+                  message: "Ugyldig udløbsdato (MM/ÅÅ)."
+                }
               })}
               type="text"
               className="w-full text-white border border-gray-400 rounded-md p-3 bg-black focus:border-primary focus:outline-none"
@@ -110,8 +110,8 @@ export default function Payment({ onBack, setCurrentView }) {
                 required: "CVC is required.",
                 pattern: {
                   value: /^[0-9]{3}$/,
-                  message: "CVC must be 3 digits.",
-                },
+                  message: "CVC must be 3 digits."
+                }
               })}
               type="text"
               className="w-full text-white border border-gray-400 rounded-md p-3 bg-black focus:border-primary focus:outline-none"
@@ -127,7 +127,7 @@ export default function Payment({ onBack, setCurrentView }) {
           <button
             onClick={onBack}
             type="button"
-            className="px-10 py-2 border border-primary text-white rounded-full"
+            className="px-10 py-2 border border-primary text-black hover:text-primary rounded-full"
           >
             Back
           </button>

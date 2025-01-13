@@ -60,7 +60,7 @@ const Footer = () => {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-primary transition duration-300"
+              className="text-inherit hover:text-primary transition duration-300"
             >
               <FaFacebook size={24} />
             </a>
@@ -68,7 +68,7 @@ const Footer = () => {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-primary transition duration-300"
+              className="text-inherit hover:text-primary transition duration-300"
             >
               <FaInstagram size={24} />
             </a>
@@ -76,7 +76,7 @@ const Footer = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-primary transition duration-300"
+              className="text-inherit hover:text-primary transition duration-300"
             >
               <FaLinkedin size={24} />
             </a>
@@ -84,7 +84,7 @@ const Footer = () => {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-primary transition duration-300"
+              className="text-inherit hover:text-primary transition duration-300"
             >
               <FaTwitter size={24} />
             </a>

@@ -18,7 +18,7 @@ const SheetPortal = SheetPrimitive.Portal;
 const SheetOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 bg-darkorange/80 backdrop-blur-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-primary/80 backdrop-blur-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0", // white transparent background
       className
     )}
     {...props}
@@ -28,7 +28,7 @@ const SheetOverlay = React.forwardRef(({ className, ...props }, ref) => (
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-  "fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out",
+  "fixed z-50 gap-4 p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out",
   {
     variants: {
       side: {
@@ -37,12 +37,12 @@ const sheetVariants = cva(
           "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
         left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
         right:
-          "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-xl",
-      },
+          "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-xl"
+      }
     },
     defaultVariants: {
-      side: "right",
-    },
+      side: "right"
+    }
   }
 );
 
@@ -52,7 +52,11 @@ const SheetContent = React.forwardRef(
       <SheetOverlay />
       <SheetPrimitive.Content
         ref={ref}
-        className={cn(sheetVariants({ side }), className)}
+        className={cn(
+          sheetVariants({ side }),
+          "bg-background text-primary", // Set background to background and text to primary color
+          className
+        )}
         {...props}
       >
         <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
@@ -91,7 +95,7 @@ SheetFooter.displayName = "SheetFooter";
 const SheetTitle = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn("text-lg font-semibold ", className)}
+    className={cn("text-lg font-semibold text-primary", className)} // title text color set to primary
     {...props}
   />
 ));
@@ -100,7 +104,7 @@ SheetTitle.displayName = SheetPrimitive.Title.displayName;
 const SheetDescription = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
-    className={cn("text-sm ", className)}
+    className={cn("text-sm text-inherit", className)} // description text inherits color from its parent
     {...props}
   />
 ));
@@ -116,5 +120,5 @@ export {
   SheetHeader,
   SheetFooter,
   SheetTitle,
-  SheetDescription,
+  SheetDescription
 };

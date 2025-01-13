@@ -6,7 +6,7 @@ const Info = () => {
   return (
     <>
       <>
-        <h1 className="text-center text-4xl font-bold font-titan text-white my-12">
+        <h1 className="text-center text-4xl font-bold font-titan text-inherit my-12">
           Information
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-2 max-w-7xl mx-auto my-8">

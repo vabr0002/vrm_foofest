@@ -59,22 +59,31 @@ body {
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Light Theme */
+[data-theme="dark"] {
+  --background: hsl(20, 14.3%, 4.1%);
+  --foreground: hsl(60, 9.1%, 97.8%);
+  --primary: hsl(20.5, 90.2%, 48.2%);
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+/* Dark Theme */
+[data-theme="light"] {
+  --background: #ffffff; /* dark background */
+  --foreground: #000000; /* light foreground */
+  --primary: hsl(20.5, 90.2%, 48.2%);
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
-  appearance: none;
+/* Body and other elements */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+header {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+footer {
+  transition: background-color 0.5s ease, color 0.5s ease;
 }

@@ -29,7 +29,7 @@ export default async function ProgramPage() {
   return (
     <>
       <div className="flex flex-col items-center justify-center min-h-screen gap-6">
-        <h1 className="text-center text-4xl font-bold font-titan text-white mt-12">
+        <h1 className="text-center text-4xl font-bold font-titan text-inherit mt-12">
           Festival program
         </h1>
         <Schedule stages={stages} />

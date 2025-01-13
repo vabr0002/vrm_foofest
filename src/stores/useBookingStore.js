@@ -1,17 +1,21 @@
 import { create } from "zustand";
-import { reserveSpot, fullfillReservation, getCampingAreas } from "../lib/database";
+import {
+  reserveSpot,
+  fullfillReservation,
+  getCampingAreas
+} from "../lib/database";
 
 // Default værdier for billetter og camping
 const defaultTickets = [
   { id: 1, title: "Foo - Ticket", price: 799, quantity: 0 },
-  { id: 2, title: "VIP - Ticket", price: 1299, quantity: 0 },
+  { id: 2, title: "VIP - Ticket", price: 1299, quantity: 0 }
 ];
 
 const defaultCampingSelection = {
   area: null,
   tents: { twoPerson: 0, threePerson: 0, ownTent: 0 },
   greenCamping: false,
-  areas: [],
+  areas: []
 };
 
 const useBookingStore = create((set, get) => ({
@@ -50,8 +54,8 @@ const useBookingStore = create((set, get) => ({
         tickets: updatedTickets,
         campingSelection: {
           ...state.campingSelection,
-          tents: updatedTents,
-        },
+          tents: updatedTents
+        }
       };
     });
   },
@@ -69,8 +73,8 @@ const useBookingStore = create((set, get) => ({
     set((state) => ({
       campingSelection: {
         ...state.campingSelection,
-        ...updatedCamping,
-      },
+        ...updatedCamping
+      }
     })),
 
   fetchCampingAreas: async () => {
@@ -78,13 +82,13 @@ const useBookingStore = create((set, get) => ({
       const areas = await getCampingAreas();
       const formattedAreas = areas.map((area) => ({
         area: area.name || area.area,
-        available: area.available,
+        available: area.available
       }));
       set((state) => ({
         campingSelection: {
           ...state.campingSelection,
-          areas: formattedAreas,
-        },
+          areas: formattedAreas
+        }
       }));
     } catch (error) {
       console.error("Fejl ved hentning af campingområder:", error);
@@ -104,7 +108,7 @@ const useBookingStore = create((set, get) => ({
       set({
         reservationId: id,
         timer: timeout / 1000,
-        timerActive: true,
+        timerActive: true
       });
       return id;
     } catch (error) {
@@ -119,7 +123,7 @@ const useBookingStore = create((set, get) => ({
       console.error("Ingen reservations-ID fundet.");
       return null;
     }
-  
+
     try {
       const response = await fullfillReservation(reservationId);
       set({ reservationId: response.id || reservationId });
@@ -140,7 +144,7 @@ const useBookingStore = create((set, get) => ({
   decrementTimer: () =>
     set((state) => ({
       timer: Math.max(state.timer - 1, 0),
-      timerActive: state.timer > 1,
+      timerActive: state.timer > 1
     })),
 
   stopTimer: () => set({ timer: 0, timerActive: false }),
@@ -149,7 +153,7 @@ const useBookingStore = create((set, get) => ({
   resetBasket: () =>
     set({
       tickets: [...defaultTickets],
-      campingSelection: { ...defaultCampingSelection },
+      campingSelection: { ...defaultCampingSelection }
     }),
 
   resetBooking: () =>
@@ -158,8 +162,8 @@ const useBookingStore = create((set, get) => ({
       campingSelection: { ...defaultCampingSelection },
       timer: 0,
       timerActive: false,
-      reservationId: null,
-    }),
+      reservationId: null
+    })
 }));
 
 export default useBookingStore;

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Modal from "@/components/modal/Modal";
 import { useAuth } from "@/context/AuthContext";
+import ThemeSwitcher from "../theme_switcher/themeSwitcher";
 
 const Navigation = () => {
   const pathname = usePathname();
@@ -33,7 +34,7 @@ const Navigation = () => {
               className={`text-4xl font-titan font-extrabold ${
                 pathname === "/"
                   ? "text-primary"
-                  : "text-white hover:text-primary transition ease-out duration-300"
+                  : "text-inherit hover:text-primary transition ease-out duration-300"
               }`}
             >
               FooFest
@@ -146,7 +147,7 @@ const renderLinks = (
           handleLogout();
           closeMenu();
         }}
-        className="text-white hover:text-primary transition"
+        className="text-inherit bg-none hover:text-primary "
       >
         Logout
       </button>
@@ -156,11 +157,12 @@ const renderLinks = (
           toggleModal();
           closeMenu();
         }}
-        className="text-white hover:text-primary transition"
+        className="text-inherit bg-none hover:text-primary "
       >
         Login
       </button>
     )}
+    <ThemeSwitcher />
   </>
 );
 

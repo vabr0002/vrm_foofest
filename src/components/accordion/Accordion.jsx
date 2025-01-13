@@ -7,7 +7,7 @@ import {
 
 const AccordionComponent = () => {
   return (
-    <section className="flex flex-col items-center justify-center p-4">
+    <section className="flex flex-col items-center justify-center p-4 mb-12">
       <Accordion
         type="single"
         collapsible

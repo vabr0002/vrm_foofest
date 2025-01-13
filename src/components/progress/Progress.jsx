@@ -10,16 +10,16 @@ const Progress = ({ currentStep }) => {
           <div key={step} className="flex items-center">
             <div className="flex flex-col items-center">
               <div
-                className={`w-6 h-6 rounded-full ${
+                className={`w-6 h-6 rounded-full border-2 ${
                   steps.indexOf(currentStep) >= index
-                    ? "bg-primary"
-                    : "bg-white"
+                    ? "bg-white border-primary"
+                    : "bg-primary border-white"
                 }`}
               ></div>
 
               <span
                 className={`text-sm absolute top-7 ${
-                  currentStep === step ? "text-primary" : "text-background"
+                  currentStep === step ? "text-white" : "text-primary"
                 }`}
               >
                 {capitalize(step)}
